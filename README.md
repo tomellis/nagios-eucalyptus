@@ -181,7 +181,7 @@ define service{
         check_command                   check_nrpe_command!check_loopback
 }
 
-</pre></code>
+</code></pre>
 
 == How to extend monitoring.
 
