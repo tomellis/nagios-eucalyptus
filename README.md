@@ -43,37 +43,10 @@ Check Exit Status http://exchange.nagios.org/directory/Plugins/Operating-Systems
 
 ## Add your check in Nagios
 
-### Check Loopback
-
-This will check how many loopback devices are available. It should be used on the Storage Controller / Node Controller. 
-
-<pre><code>
-define service{
-        use                             generic-service         ; Name of service template to use
-        hostgroup_name                  Eucalyptus Servers
-        service_description             Check loopback device availability
-        check_command                   check_nrpe_command!check_loopback
-}
-
-</code></pre>
-
-### Check libvirtd
-
-On Xen / KVM based Cloud, you should check that libvirt daemon is running on your Node Controllers
-
-<pre><code>
-define service{
-        use                             generic-service         ; Name of service template to use
-        hostgroup_name                  Eucalyptus NC
-        service_description             Check libvirtd service
-        check_command                   check_nrpe_command!check_libvirtd
-}
-
-</code></pre>
-
 ### Check Eucalyptus cloud service
 
 The cloud service is running on your Cloud Controller, Storage Controller, Walrus. 
+
 <pre><code>
 define service{
         use                             local-service         ; Name of service template to use
@@ -96,6 +69,7 @@ define service{
 </pre></code>
 
 ### Check Eucalyptus node controller service
+
 The node controller service ( eucalyptus-nc ) is running on all NCs
 <pre><code>
 define service{
@@ -105,3 +79,31 @@ define service{
         check_command                   check_tcp!8775
 }
 </pre></code>
+
+### Check libvirtd
+
+On Xen / KVM based Cloud, you should check that libvirt daemon is running on your Node Controllers
+
+<pre><code>
+define service{
+        use                             generic-service         ; Name of service template to use
+        hostgroup_name                  Eucalyptus NC
+        service_description             Check libvirtd service
+        check_command                   check_nrpe_command!check_libvirtd
+}
+
+</code></pre>
+
+### Check Loopback
+
+This will check how many loopback devices are available. It should be used on the Storage Controller / Node Controller. 
+
+<pre><code>
+define service{
+        use                             generic-service         ; Name of service template to use
+        hostgroup_name                  Eucalyptus Servers
+        service_description             Check loopback device availability
+        check_command                   check_nrpe_command!check_loopback
+}
+
+</code></pre>
