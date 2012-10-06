@@ -2,7 +2,8 @@
 
 ## Overview
 
-This are some simple Nagios check script to monitor your Eucalyptus cloud
+This are some simple Nagios check script to monitor your Eucalyptus cloud. You should probably also monitor all the normal components of a Linux host : CPU, RAM, Disk, SWAP, IO, ...
+
 
 ## Prerequisite
 
@@ -14,7 +15,7 @@ The scripts are using Nagios Remote Plugin Executor / NRPE (http://exchange.nagi
 
 You can check NRPE is working by running check_nrpe from your nagios server. The following command, should return the version of NRPE agent on your client. 
 <pre><code>
-/your/nagios/plugins/directory/check_nrpe -H < IP of your Clients > 
+/your/nagios/plugins/directory/check_nrpe -H Client_IP
 NRPE v2.12
 
 </code></pre>
@@ -87,7 +88,7 @@ define service {
 
 ### Check libvirtd
 
-On Xen / KVM based Cloud, you should check that libvirt daemon is running on your Node Controllers
+On Xen / KVM based Cloud, check that libvirt daemon is running on your Node Controllers
 
 <pre><code>
 define service {
@@ -98,6 +99,40 @@ define service {
 }
 
 </code></pre>
+
+### Check available public IP
+
+This will check the amount of public IP available. It will issue a warning if 80% of IP are allocated and a critical error at 95%. 
+
+It should run only from one node.
+
+<pre><code>
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       localhost
+        service_description             Eucalyptus IP Addresses
+        check_command                   check_euca_addresses!80!95
+}
+
+</code></pre>
+
+### Check cloud capacity
+
+This will check the amount of core available on your cloud. It will issue a warning if 80% of your ressources are allocated and a critical error at 95%
+
+It should run only from one node.
+
+<pre><code>
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       localhost
+        service_description             Eucalyptus Available Capacity
+        check_command                   check_euca_capacity!80!95
+}
+
+</code></pre>
+
 
 ### Check Loopback
 
@@ -112,3 +147,13 @@ define service{
 }
 
 </code></pre>
+
+
+
+== How to extend monitoring.
+
+You can also use eutester to extend Eucalyptus monitoring. Eutester will check that not only the components are available they can also be started / accessed. 
+
+eutester : https://github.com/eucalyptus/eutester
+
+
