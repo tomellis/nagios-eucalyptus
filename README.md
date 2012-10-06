@@ -48,49 +48,49 @@ Check Exit Status http://exchange.nagios.org/directory/Plugins/Operating-Systems
 The cloud service is running on your Cloud Controller, Storage Controller, Walrus. 
 
 <pre><code>
-define service{
+define service {
         use                             local-service         ; Name of service template to use
         hostgroup_name                  Cloud Controller, Walrus, Storage Controller
         service_description             Eucalyptus-Cloud Service TCP Listen
         check_command                   check_tcp!8773
 }
 
-</pre></code>
+</code></pre>
 
 ### Check Eucalyptus cluster controller service
 
 The cluster controller service ( eucalyptus-cc ) is running on your cluster Controller
 
 <pre><code>
-define service{
+define service {
         use                             local-service         ; Name of service template to use
         hostgroup_name                  Cluster Controller
         service_description             Eucalyptus CC Service TCP Listen
         check_command                   check_tcp!8774
 }
 
-</pre></code>
+</code></pre>
 
 ### Check Eucalyptus node controller service
 
 The node controller service ( eucalyptus-nc ) is running on all NCs
 
 <pre><code>
-define service{
+define service {
         use                             local-service         ; Name of service template to use
         hostgroup_name                  Node Controller
         service_description             Eucalyptus-nc Service TCP Listen
         check_command                   check_tcp!8775
 }
 
-</pre></code>
+</code></pre>
 
 ### Check libvirtd
 
 On Xen / KVM based Cloud, you should check that libvirt daemon is running on your Node Controllers
 
 <pre><code>
-define service{
+define service {
         use                             local-service         ; Name of service template to use
         hostgroup_name                  Eucalyptus NC
         service_description             Check libvirtd service
