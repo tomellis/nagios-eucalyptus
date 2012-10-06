@@ -14,7 +14,8 @@ The scripts are using Nagios Remote Plugin Executor ( NRPE ) to communicate in b
 
 You can check NRPE is working by running check_nrpe from your nagios server. If it is working, you should get the version of NRPE agent on your client. 
 <pre><code>
-/your/nagios/plugins/directory/check_nrpe -H <IP of your Clients>
+/your/nagios/plugins/directory/check_nrpe -H \<IP of your Clients\>
+NRPE v2.12
 </code></pre>
 
 
