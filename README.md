@@ -54,11 +54,13 @@ define service{
         service_description             Eucalyptus-Cloud Service TCP Listen
         check_command                   check_tcp!8773
 }
+
 </pre></code>
 
 ### Check Eucalyptus cluster controller service
 
 The cluster controller service ( eucalyptus-cc ) is running on your cluster Controller
+
 <pre><code>
 define service{
         use                             local-service         ; Name of service template to use
@@ -66,11 +68,13 @@ define service{
         service_description             Eucalyptus CC Service TCP Listen
         check_command                   check_tcp!8774
 }
+
 </pre></code>
 
 ### Check Eucalyptus node controller service
 
 The node controller service ( eucalyptus-nc ) is running on all NCs
+
 <pre><code>
 define service{
         use                             local-service         ; Name of service template to use
@@ -78,6 +82,7 @@ define service{
         service_description             Eucalyptus-nc Service TCP Listen
         check_command                   check_tcp!8775
 }
+
 </pre></code>
 
 ### Check libvirtd
@@ -86,7 +91,7 @@ On Xen / KVM based Cloud, you should check that libvirt daemon is running on you
 
 <pre><code>
 define service{
-        use                             generic-service         ; Name of service template to use
+        use                             local-service         ; Name of service template to use
         hostgroup_name                  Eucalyptus NC
         service_description             Check libvirtd service
         check_command                   check_nrpe_command!check_libvirtd
@@ -100,7 +105,7 @@ This will check how many loopback devices are available. It should be used on th
 
 <pre><code>
 define service{
-        use                             generic-service         ; Name of service template to use
+        use                             local-service         ; Name of service template to use
         hostgroup_name                  Eucalyptus Servers
         service_description             Check loopback device availability
         check_command                   check_nrpe_command!check_loopback
