@@ -44,6 +44,41 @@ Check Exit Status http://exchange.nagios.org/directory/Plugins/Operating-Systems
 
 ## Add your check in Nagios
 
+###  Configure your commands
+
+Edit your commands.cfg and add the following
+
+<pre><code>
+define  command {
+        command_name    check_nrpe_command
+        command_line    $USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$
+}
+
+define  command {
+        command_name    check_nrpe_command_args
+        command_line    $USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$ -a $ARG2$
+}
+
+define command {
+        command_name    check_euca_addresses
+        command_line    $USER1$/check_euca_addresses.sh $ARG1$ $ARG2$
+}
+
+define command {
+        command_name    check_tcp_service
+        command_line    $USER1$/check_tcp -H $HOSTADDRESS$ -p $ARG1$
+}
+
+define command {
+        command_name    check_euca_capacity
+        command_line    $USER1$/check_euca_capacity.sh $ARG1$ $ARG2$
+}
+define command {
+        command_name    check_basic_test
+        command_line    $USER1$/euca_basic_test.sh
+}
+</code></pre>
+
 ### Check Eucalyptus cloud service
 
 The cloud service is running on your Cloud Controller, Storage Controller, Walrus. 
@@ -146,9 +181,7 @@ define service{
         check_command                   check_nrpe_command!check_loopback
 }
 
-</code></pre>
-
-
+</pre></code>
 
 == How to extend monitoring.
 
