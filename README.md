@@ -9,7 +9,7 @@ This are some simple Nagios check script to monitor your Eucalyptus cloud. You s
 
 The scripts are using Nagios Remote Plugin Executor / NRPE (http://exchange.nagios.org/directory/Addons/Monitoring-Agents/NRPE--2D-Nagios-Remote-Plugin-Executor/details) to communicate in between Nagios server and host. 
 
-## Installation 
+## Installation on Clients
 
 ### Check NRPE is working
 
@@ -19,7 +19,6 @@ You can check NRPE is working by running check_nrpe from your nagios server. The
 NRPE v2.12
 
 </code></pre>
-
 
 
 ### Add the plugins on each nodes
@@ -42,9 +41,9 @@ Check Upstart http://exchange.nagios.org/directory/Plugins/Operating-Systems/Lin
 
 Check Exit Status http://exchange.nagios.org/directory/Plugins/Operating-Systems/Linux/Check--2Fetc-2Finit-2Ed-script-status/details
 
-## Add your check in Nagios
+## Install in Nagios
 
-###  Configure your commands
+###  Declare your commands
 
 Edit your commands.cfg and add the following
 
