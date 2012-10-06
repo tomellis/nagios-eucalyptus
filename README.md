@@ -1,4 +1,8 @@
-nagios-eucalyptus
-=================
+# nagios-eucalyptus
 
-Monitoring Eucalyptus Infrastructure using Nagios
+## Overview
+This are some simple Nagios check script to monitor your Eucalyptus cloud
+
+## Installation
+
+Clone the following repository
