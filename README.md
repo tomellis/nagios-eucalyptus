@@ -45,6 +45,8 @@ Check Exit Status http://exchange.nagios.org/directory/Plugins/Operating-Systems
 
 ###  Declare your commands
 
+Copy the script available in nagios into the nagios plugin directory of your nagios server.
+
 Edit your commands.cfg and add the following
 
 <pre><code>
@@ -182,7 +184,7 @@ define service{
 
 </code></pre>
 
-== How to extend monitoring.
+## How to extend monitoring.
 
 You can also use eutester to extend Eucalyptus monitoring. Eutester will check that not only the components are available they can also be started / accessed. 
 
