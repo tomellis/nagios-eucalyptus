@@ -9,10 +9,10 @@ REVISION="1.0.0"
 . $PROGPATH/utils.sh
 
 # Eucalyptus Admin Credentials
-export EC2_URL=http://109.200.204.4:8773/services/Eucalyptus
-export S3_URL=http://109.200.204.6:8773/services/Walrus
-export EC2_ACCESS_KEY='JCANTVFQFQS1MMKWMR10H'
-export EC2_SECRET_KEY='UNkpne54iwiqAZ2UEwwo5ohdgs3IIEteIF5ozeq0'
+export EC2_URL=http://<CLC_IP>:8773/services/Eucalyptus
+export S3_URL=http://<Walrus IP>:8773/services/Walrus
+export EC2_ACCESS_KEY='access key'
+export EC2_SECRET_KEY='private key'
 
 print_usage() {
 	echo "Usage: $PROGNAME [warning-percent] [critical-percent]"
