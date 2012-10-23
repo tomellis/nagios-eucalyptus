@@ -12,7 +12,7 @@
 CREDPATH='/root/.eucarc/'
 TEST='BasicInstanceChecks'
 EMI='emi-AE6A355B'
-PATH_TO_TESTCASE='/root/eutester/testcases/cloud_user/instances/instancetest.py'
+TESTCASE='/root/eutester/testcases/cloud_user/instances/instancetest.py'
 
 # Run the test
-$TESTCASE --credpath=$CREDPATH --tests $TEST --emi $EMI --nagios
+python $TESTCASE --credpath=$CREDPATH --tests $TEST --emi $EMI --nagios
