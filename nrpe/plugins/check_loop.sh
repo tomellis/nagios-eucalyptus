@@ -45,9 +45,9 @@ case "$1" in
                 LOOPBACK_WARN=$1
                 LOOPBACK_CRIT=$2
 		LOOPBACK_USED=`losetup -a | wc -l`
-                LOOPBACK_AVAILABLE=`ls /dev/loop* | wc -l`
+               LOOPBACK_AVAILABLE=`find /dev/ -maxdepth 1 -name 'loop[0-9]' -o -name 'loop[0-9][0-9]'| wc -l `
 		if test $(( ${LOOPBACK_AVAILABLE} - ${LOOPBACK_USED} )) -gt ${LOOPBACK_WARN} ; then
-			echo "LOOPBACK OK"
+			echo "LOOPBACK OK - available: ${LOOPBACK_AVAILABLE}"
 			exit 0
                 elif [ $(( ${LOOPBACK_AVAILABLE} - ${LOOPBACK_USED} )) -lt ${LOOPBACK_WARN} ] && [ $(( ${LOOPBACK_AVAILABLE} - ${LOOPBACK_USED} )) -gt ${LOOPBACK_CRIT} ]; then
 			echo "WARNING - LOOPBACK AVAILABLE =  $(( ${LOOPBACK_AVAILABLE} - ${LOOPBACK_USED} ))"
